@@ -1,0 +1,66 @@
+<html>
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<FORM action = "form.php">
+
+<table>
+<h3> 기본정보입력</h3>
+
+<tr>
+<td>아이디</td>
+<td> <INPUT type = "text" name="userid"></td>
+<td><INPUT type = "submit" value ="중복확인"><BR></td>
+</tr>
+
+<tr>
+<td>비밀번호</td>
+<td><INPUT type = "password" name ="pass"><BR></td>
+</tr>
+
+<tr>
+<td>비밀번호확인</td>
+<td><INPUT type = "passwordcheck" name ="passcheck"><BR></td>
+</tr>
+</table>
+
+<table>
+<h3>개인정보 입력</h3>
+
+<tr>
+<td>이름</td>
+<td><INPUT type = "text" name="kname"><BR></td>
+</tr>
+
+<tr>
+<td>이메일</td>
+<td><INPUT type = "email" name="kemail"></td>
+<td><INPUT type = "submit" value ="이메일인증"><BR></td>
+</tr>
+</table>
+
+<tr>
+
+<td><INPUT type = "checkbox" name = "email" value="emailcheck">이메일 수신 동의<BR></td>
+<td>ⓘ수신거부 시 일부 서비스에 제한이 있을 수 있습니다. 비밀번호 초기화 메일<BR></td>
+<td>수신 등에 반드시 필요한 정보이므로 정확히 이메일 주소를 입력해주세요.<BR></td>
+</tr>
+
+<tr>
+
+<td>휴대전화번호 <INPUT type = "phon" name="kphon"><BR></td>
+<td><INPUT type = "checkbox" value ="SMS 수신 동의">SMS 수신 동의<BR></td>
+<td>ⓘ수신거부 시 일부 서비스에 제한이 있을 수 있습니다.<BR></td>
+
+<table>
+<td><INPUT type = "submit" value ="이전단계"></td>
+<td><INPUT type = "submit" value ="다음단계"></td>
+</tr>
+</table>
+</FORM>
+
+</body>
+</html>
