@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>게임 랭킹보드</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f7f6;
+    margin: 0;
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
+
+.ranking-container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, .1);
+    width: 100%;
+    max-width: 800px;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2.2em;
+    font-weight: 700;
+}
+
+.ranking-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.ranking-table th,
+.ranking-table td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.ranking-table thead th {
+    background-color: #007bff;
+    color: white;
+    font-weight: 600;
+    font-size: 1.1em;
+    text-transform: uppercase;
+}
+
+.ranking-table tbody tr:nth-child(even) {
+    background-color: #f8f8f8;
+}
+
+.ranking-table tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+.ranking-table tbody tr:first-child {
+    font-weight: bold;
+    color: #d4af37;
+    background-color: #fffacd;
+}
+
+.ranking-table td:nth-child(3) {
+    font-weight: 500;
+    color: #5b9bd5;
+}
+
+.ranking-table td:nth-child(4) {
+    font-weight: 500;
+    color: red;
+}
+
+.nav-buttons {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.nav-buttons button {
+    padding: 10px 25px;
+    font-size: 1em;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 0 10px;
+}
+
+.nav-buttons .btn-mypage {
+    background-color: #007bff;
+}
+
+.nav-buttons .btn-mypage:hover {
+    background-color: #0056b3;
+}
+
+.nav-buttons .btn-main {
+    background-color: #6c757d;
+}
+
+.nav-buttons .btn-main:hover {
+    background-color: #5a6268;
+}
+    </style>
+</head>
+<body>
+    <div class="ranking-container">
+        <h2>게임 랭킹</h2>
+
+        <table class="ranking-table">
+            <thead>
+                <tr><th>순위</th><th>아이디</th><th>점수</th><th>정확도</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>PlayerOne</td><td>98765</td><td>99.5%</td></tr>
+                <tr><td>2</td><td>BestGamer</td><td>95432</td><td>98.1%</td></tr>
+                <tr><td>3</td><td>SuperMouse</td><td>92100</td><td>97.8%</td></tr>
+                <tr><td>4</td><td>NoobSlayer</td><td>88760</td><td>96.2%</td></tr>
+                <tr><td>5</td><td>KingPlayer</td><td>85000</td><td>95.0%</td></tr>
+                <tr><td>6</td><td>GameMaster</td><td>82345</td><td>94.7%</td></tr>
+                <tr><td>7</td><td>FastHand</td><td>79876</td><td>93.3%</td></tr>
+                <tr><td>8</td><td>LuckyGuy</td><td>75000</td><td>92.0%</td></tr>
+                <tr><td>9</td><td>User1234</td><td>70500</td><td>90.9%</td></tr>
+                <tr><td>10</td><td>Guest007</td><td>68000</td><td>89.4%</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="nav-buttons">
+        <button class="btn-mypage" onclick="location.href='마이페이지.html'">마이페이지</button>
+        <button class="btn-main" onclick="location.href='main.html'">로그인 페이지</button>
+    </div>
+</body>
+</html>

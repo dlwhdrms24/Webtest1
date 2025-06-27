@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>게임 결과 </title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.result-container {
+    background-color: #fff;
+    padding: 40px 60px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, .15);
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2.2em;
+    font-weight: bold;
+}
+
+.result-item {
+    font-size: 1.5em;
+    color: #555;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.result-item:last-child {
+    border-bottom: none;
+    margin-bottom: 30px;
+}
+
+.result-label {
+    font-weight: bold;
+    color: #333;
+}
+
+.result-value {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.main-page-button {
+    padding: 15px 30px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color .3s ease;
+    margin-top: 20px;
+}
+
+.main-page-button:hover {
+    background-color: #0056b3;
+}
+    </style>
+</head>
+<body>
+    <div class="result-container">
+        <h2>게임 결과</h2>
+        <div class="result-item">
+            <span class="result-label">최종 점수:</span>
+            <span id="final-score" class="result-value">0</span> </div>
+        <div class="result-item">
+            <span class="result-label">최종 정확도:</span>
+            <span id="final-accuracy" class="result-value">0%</span> </div>
+        <button class="main-page-button" onclick="location.href='마이페이지.html'">마이페이지로</button>
+    </div>
+</body>
+</html>

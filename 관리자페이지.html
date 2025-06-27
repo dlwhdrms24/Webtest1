@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>관리자 페이지</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f7f6;
+    margin: 0;
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
+
+.admin-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, .1);
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+}
+
+h2 {
+    width: 100%;
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2em;
+    font-weight: 600;
+}
+
+.admin-layout {
+    display: flex;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* 라디오 버튼을 숨기는 것은 동일 */
+.admin-layout > input[type="radio"] {
+    display: none;
+}
+
+.admin-nav {
+    flex: 0 0 200px;
+    padding-right: 20px;
+    border-right: 1px solid #eee;
+    margin-right: 30px;
+}
+
+.admin-nav label {
+    display: block;
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    background-color: transparent;
+    border: none;
+    text-align: left;
+    font-size: 1.05em;
+    color: #555;
+    cursor: pointer;
+    transition: background-color .3s ease, color .3s ease;
+    border-radius: 5px;
+}
+
+.admin-nav label:hover {
+    background-color: #e9ecef;
+    color: #007bff;
+}
+
+/* 체크된 라디오 버튼에 따라 라벨의 스타일 변경 */
+#user-management-tab:checked ~ .admin-nav label[for="user-management-tab"],
+#statistics-logs-tab:checked ~ .admin-nav label[for="statistics-logs-tab"] {
+    background-color: #007bff;
+    color: white;
+    font-weight: 600;
+}
+
+.admin-content {
+    flex-grow: 1;
+    padding-left: 10px;
+}
+
+.content-section {
+    display: none;
+}
+
+/* 체크된 라디오 버튼에 따라 콘텐츠 섹션 표시 */
+#user-management-tab:checked ~ .admin-content #user-management-section,
+#statistics-logs-tab:checked ~ .admin-content #statistics-logs-section {
+    display: block;
+}
+
+.content-section h3 {
+    font-size: 1.6em;
+    color: #444;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.search-bar {
+    display: flex;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.search-bar input[type="text"] {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.search-bar button {
+    padding: 10px 15px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color .3s ease;
+}
+
+.search-bar button:hover {
+    background-color: #5a6268;
+}
+
+.user-list-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    table-layout: fixed;
+}
+
+.user-list-table th,
+.user-list-table td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+    word-break: break-word;
+}
+
+.user-list-table thead th {
+    background-color: #343a40;
+    color: white;
+    font-weight: 600;
+}
+
+.user-list-table tbody tr:nth-child(even) {
+    background-color: #f8f8f8;
+}
+
+.user-list-table tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+.user-list-table .action-buttons button {
+    padding: 6px 12px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: .9em;
+}
+
+.user-list-table .action-buttons .edit-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.user-list-table .action-buttons .delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.stats-content,
+.logs-content {
+    background-color: #f8f8f8;
+    border: 1px solid #eee;
+    padding: 20px;
+    border-radius: 8px;
+    min-height: 200px;
+    color: #666;
+    line-height: 1.8;
+    overflow-y: auto;
+    max-height: 300px;
+}
+
+.back-to-main-button {
+    padding: 12px 25px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color .3s ease;
+    margin-top: 30px;
+}
+
+.back-to-main-button:hover {
+    background-color: #5a6268;
+}
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <h2>관리자 페이지</h2>
+
+        <div class="admin-layout">
+            <input type="radio" id="user-management-tab" name="admin-tabs" checked>
+            <input type="radio" id="statistics-logs-tab" name="admin-tabs">
+
+            <div class="admin-nav">
+                <label for="user-management-tab">사용자 관리</label>
+                <label for="statistics-logs-tab">통계/로그</label>
+            </div>
+
+            <div class="admin-content">
+                <div id="user-management-section" class="content-section">
+                    <h3>사용자 관리</h3>
+                    <div class="search-bar">
+                        <input type="text" placeholder="아이디, 이름, 이메일 검색...">
+                        <button type="button">검색</button> </div>
+                    <table class="user-list-table">
+                        <thead>
+                            <tr>
+                                <th>번호</th>
+                                <th>아이디</th>
+                                <th>이름</th>
+                                <th>이메일</th>
+                                <th>전화번호</th>
+                                <th>가입일</th>
+                                <th>관리</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>user001</td>
+                                <td>김철수</td>
+                                <td>kim.chul@example.com</td>
+                                <td>010-1111-2222</td>
+                                <td>2025-01-10</td>
+                                <td class="action-buttons">
+                                    <button class="edit-btn">수정</button>
+                                    <button class="delete-btn">삭제</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>admin_user</td>
+                                <td>관리자</td>
+                                <td>admin@example.com</td>
+                                <td>010-9999-8888</td>
+                                <td>2024-12-01</td>
+                                <td class="action-buttons">
+                                    <button class="edit-btn">수정</button>
+                                    <button class="delete-btn">삭제</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>gamergirl</td>
+                                <td>이영희</td>
+                                <td>lee.yh@example.com</td>
+                                <td>010-3333-4444</td>
+                                <td>2025-02-15</td>
+                                <td class="action-buttons">
+                                    <button class="edit-btn">수정</button>
+                                    <button class="delete-btn">삭제</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>park_dev</td>
+                                <td>박서준</td>
+                                <td>park.dev@example.com</td>
+                                <td>010-5555-6666</td>
+                                <td>2025-03-20</td>
+                                <td class="action-buttons">
+                                    <button class="edit-btn">수정</button>
+                                    <button class="delete-btn">삭제</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>tester01</td>
+                                <td>최민준</td>
+                                <td>choi.mj@example.com</td>
+                                <td>010-7777-8888</td>
+                                <td>2025-04-01</td>
+                                <td class="action-buttons">
+                                    <button class="edit-btn">수정</button>
+                                    <button class="delete-btn">삭제</button>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td>6</td>
+                                <td>happy_cat</td>
+                                <td>정다은</td>
+                                <td>jung.da@example.com</td>
+                                <td>010-1234-5678</td>
+                                <td>2025-05-11</td>
+                                <td class="action-buttons">
+                                    <button class="edit-btn">수정</button>
+                                    <button class="delete-btn">삭제</button>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td>7</td>
+                                <td>code_master</td>
+                                <td>윤지후</td>
+                                <td>yoon.jh@example.com</td>
+                                <td>010-8765-4321</td>
+                                <td>2025-06-22</td>
+                                <td class="action-buttons">
+                                    <button class="edit-btn">수정</button>
+                                    <button class="delete-btn">삭제</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="statistics-logs-section" class="content-section">
+                    <h3>통계/로그</h3>
+                    <div class="stats-content">
+                        <p>일일 방문자 수: 1,234명</p>
+                        <p>총 회원 수: 7명</p>
+                        <p>오늘 신규 가입: 1명</p>
+                    </div>
+                    <h3>최신 로그</h3>
+                    <div class="logs-content">
+                        <p>[2025-06-26 22:07] INFO: 관리자(admin_user) 로그인</p>
+                        <p>[2025-06-26 22:05] WARN: 사용자(unknown) 로그인 실패 - IP: 192.168.1.10</p>
+                        <p>[2025-06-26 21:50] INFO: 사용자(gamergirl) 게시글 작성</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="back-to-main-button" onclick="location.href='main.html'">메인 화면으로</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>게임화면</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    background-color: #fff;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.top-info-bar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 20px;
+    padding: 0 10px;
+    box-sizing: border-sizing;
+}
+
+.info-box {
+    padding: 8px 15px;
+    border: 1px solid;
+    font-size: 1.2em;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.time-box {
+    border-color: red;
+    color: red;
+}
+
+.score-box {
+    border-color: #5b9bd5;
+    color: #5b9bd5;
+}
+
+.game-area {
+    width: 100%;
+    max-width: 900px;
+    aspect-ratio: 16/9;
+    border: 2px dashed #a0a0a0;
+    position: relative;
+    background-color: #fff;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.circle {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: #87ceeb;
+    border-radius: 50%;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, .2);
+    transform: translate(-50%, -50%);
+}
+
+.circle:nth-child(1) {
+    top: 25%;
+    left: 20%;
+}
+
+.circle:nth-child(2) {
+    top: 25%;
+    left: 80%;
+}
+
+.circle:nth-child(3) {
+    top: 50%;
+    left: 50%;
+}
+
+.circle:nth-child(4) {
+    top: 75%;
+    left: 20%;
+}
+
+.circle:nth-child(5) {
+    top: 75%;
+    left: 75%;
+}
+
+.end-button {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    padding: 10px 20px;
+    background-color: #a0a0a0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    z-index: 10;
+}
+
+.end-button:hover {
+    background-color: #888;
+}
+    </style>
+</head>
+<body>
+    <div class="top-info-bar">
+        <div class="info-box time-box">시간: <span id="time">60</span></div>
+        <div class="info-box score-box">점수: <span id="score">0</span></div>
+    </div>
+
+    <div class="game-area">
+        <div class="circle" id="circle1"></div>
+        <div class="circle" id="circle2"></div>
+        <div class="circle" id="circle3"></div>
+        <div class="circle" id="circle4"></div>
+        <div class="circle" id="circle5"></div>
+    </div>
+
+    <button class="end-button" onclick="location.href='결과화면.html'">게임 종료</button>
+</body>
+</html>

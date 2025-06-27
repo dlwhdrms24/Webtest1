@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>아이디/비밀번호 찾기</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f7f6;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.find-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, .1);
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 1.8em;
+    font-weight: 600;
+}
+
+.tab-buttons {
+    display: flex;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #eee;
+}
+
+.tab-button {
+    flex-grow: 1;
+    padding: 12px 0;
+    cursor: pointer;
+    background-color: #f8f8f8;
+    border: none;
+    outline: none;
+    font-size: 1.1em;
+    color: #555;
+    transition: background-color .3s, color .3s;
+    border-radius: 5px 5px 0 0;
+}
+
+.tab-button:hover:not(.active) {
+    background-color: #e9ecef;
+}
+
+.tab-button.active {
+    background-color: #007bff;
+    color: white;
+    font-weight: 600;
+    border-bottom: 3px solid #007bff;
+}
+
+
+/* 추가된 제목 스타일 */
+.tab-content h3 {
+    font-size: 1.2em;
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color .3s ease;
+    margin-top: 10px;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+.help-text {
+    font-size: .85em;
+    color: #777;
+    text-align: center;
+    margin-top: 20px;
+    line-height: 1.5;
+}
+
+.back-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color .3s ease;
+}
+
+.back-button:hover {
+    background-color: #5a6268;
+}
+    </style>
+</head>
+<body>
+    <div class="find-container">
+        <h2>아이디/비밀번호 찾기</h2>
+
+        <div id="find-id" class="tab-content active">
+            <h3>아이디 찾기</h3>
+            <form>
+                <div class="form-group">
+                    <label for="id_name">이름</label>
+                    <input type="text" id="id_name" name="id_name" placeholder="이름을 입력하세요" required>
+                </div>
+                <div class="form-group">
+                    <label for="id_contact_value">이메일 또는 휴대폰 번호</label>
+                    <input type="text" id="id_contact_value" name="id_contact_value" placeholder="가입 시 등록한 정보" required>
+                </div>
+                <button type="submit" class="submit-button">아이디 찾기</button>
+            </form>
+            <p class="help-text">가입 시 등록한 이름과 연락처 정보로 아이디를 찾을 수 있습니다.</p>
+        </div>
+
+        <div id="reset-pw" class="tab-content active">
+             <h3>비밀번호 재설정</h3>
+             <form>
+                <div class="form-group">
+                    <label for="pw_id">아이디</label>
+                    <input type="text" id="pw_id" name="pw_id" placeholder="아이디를 입력하세요" required>
+                </div>
+                <div class="form-group">
+                    <label for="pw_name">이름</label>
+                    <input type="text" id="pw_name" name="pw_name" placeholder="이름을 입력하세요" required>
+                </div>
+                <div class="form-group">
+                    <label for="pw_contact_value">이메일 또는 휴대폰 번호</label>
+                    <input type="text" id="pw_contact_value" name="pw_contact_value" placeholder="가입 시 등록한 정보" required>
+                </div>
+                <button type="submit" class="submit-button">비밀번호 재설정</button>
+            </form>
+            <p class="help-text">가입 시 등록한 정보로 본인인증 후 비밀번호를 재설정할 수 있습니다.</p>
+        </div>
+        
+        <a href="main.html" class="back-button">로그인 화면으로 돌아가기</a>
+    </div>
+</body>
+</html>

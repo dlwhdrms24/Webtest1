@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>마이페이지</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    background-color: #f4f7f6;
+    margin: 0;
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
+
+.mypage-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, .1);
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+}
+
+h2 {
+    width: 100%;
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2em;
+    font-weight: 600;
+}
+
+.mypage-layout {
+    display: flex;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.mypage-layout > input[type="radio"] {
+    display: none;
+}
+
+.mypage-nav {
+    flex: 0 0 180px;
+    padding-right: 20px;
+    border-right: 1px solid #eee;
+    margin-right: 30px;
+}
+
+.mypage-nav .nav-button {
+    display: block;
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    background-color: transparent;
+    border: none;
+    text-align: left;
+    font-size: 1.05em;
+    color: #555;
+    cursor: pointer;
+    transition: background-color .3s ease, color .3s ease;
+    border-radius: 5px;
+}
+
+.mypage-nav .nav-button:hover {
+    background-color: #e9ecef;
+    color: #007bff;
+}
+
+#my-info-tab:checked ~ .mypage-nav label[for="my-info-tab"],
+#game-history-tab:checked ~ .mypage-nav label[for="game-history-tab"] {
+    background-color: #007bff;
+    color: white;
+    font-weight: 600;
+}
+
+.mypage-nav .sub-nav {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.mypage-content {
+    flex-grow: 1;
+    padding-left: 10px;
+}
+
+.content-section {
+    display: none; 
+}
+
+#my-info-tab:checked ~ .mypage-content #my-info,
+#game-history-tab:checked ~ .mypage-content #game-history {
+    display: block;
+}
+
+.content-section h3 {
+    font-size: 1.6em;
+    color: #444;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.info-form .form-group {
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.info-form .form-group label {
+    flex: 0 0 100px;
+    font-size: .95em;
+    color: #555;
+    font-weight: 500;
+}
+
+.info-form .form-group input[type="text"],
+.info-form .form-group input[type="email"],
+.info-form .form-group input[type="tel"] {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+.info-form .form-group input:read-only {
+    background-color: #f0f0f0;
+}
+
+.info-form .button-group {
+    margin-top: 30px;
+    text-align: right;
+}
+
+.info-form .button-group button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color .3s ease;
+}
+
+.info-form .button-group button:hover {
+    background-color: #0056b3;
+}
+
+.info-form .button-group button.secondary {
+    background-color: #6c757d;
+}
+
+.info-form .button-group button.secondary:hover {
+    background-color: #5a6268;
+}
+
+.game-history-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.game-history-table th,
+.game-history-table td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.game-history-table thead th {
+    background-color: #6c757d;
+    color: white;
+    font-weight: 600;
+}
+
+.game-history-table tbody tr:nth-child(even) {
+    background-color: #f8f8f8;
+}
+
+.game-history-table tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+.game-history-table td.score {
+    color: #5b9bd5;
+    font-weight: 500;
+}
+    </style>
+</head>
+<body>
+    <div class="mypage-container">
+        <h2>마이페이지</h2>
+
+        <div class="mypage-layout"> 
+            <input type="radio" id="my-info-tab" name="mypage-tabs" checked>
+            <input type="radio" id="game-history-tab" name="mypage-tabs">
+
+            <div class="mypage-nav">
+                <label for="my-info-tab" class="nav-button">내 정보</label>
+                <label for="game-history-tab" class="nav-button">게임 기록</label>
+
+                <div class="sub-nav">
+                    <button class="nav-button" onclick="location.href='랭킹보드.html'">게임 랭킹</button>
+                    <button class="nav-button" onclick="location.href='게임화면.html'">게임 시작</button>
+                    <button class="nav-button" onclick="location.href='main.html'">로그아웃</button>
+                </div>
+            </div>
+
+            <div class="mypage-content">
+                <div id="my-info" class="content-section">
+                    <h3>내 정보</h3>
+                    <form class="info-form">
+                        <div class="form-group"><label for="my_id">아이디</label><input type="text" id="my_id" value="user_id_123" readonly></div>
+                        <div class="form-group"><label for="my_nickname">닉네임</label><input type="text" id="my_nickname" value="PlayerOne"></div>
+                        <div class="form-group"><label for="my_email">이메일</label><input type="email" id="my_email" value="user@example.com"></div>
+                        <div class="form-group"><label for="my_phone">전화번호</label><input type="tel" id="my_phone" value="010-1234-5678"></div>
+                        <div class="button-group"><button type="button" class="secondary">비밀번호 변경</button><button type="submit">정보 저장</button></div>
+                    </form>
+                </div>
+
+                <div id="game-history" class="content-section">
+                    <h3>게임 기록</h3>
+                    <table class="game-history-table">
+                        <thead>
+                            <tr>
+                                <th>게임 날짜</th>
+                                <th>점수</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2025-06-25</td>
+                                <td class="score">2,530점</td>
+                            </tr>
+                            <tr>
+                                <td>2025-06-24</td>
+                                <td class="score">1,100점</td>
+                            </tr>
+                            <tr>
+                                <td>2025-06-22</td>
+                                <td class="score">1,890점</td>
+                            </tr>
+                            <tr>
+                                <td>2025-06-21</td>
+                                <td class="score">1,950점</td>
+                            </tr>
+                             <tr>
+                                <td>2025-06-20</td>
+                                <td class="score">980점</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
